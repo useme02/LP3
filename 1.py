@@ -1,4 +1,5 @@
 # Write a iterative program to calculate Fibonacci numbers and find its step count.
+#TC-O(x), SC-O(1)
 COUNT = 0
 x=int(input("Enter Number of Terms :"))
 first=0
@@ -28,6 +29,7 @@ else:
 print("Steps required using Counter ", COUNT)
      
 # Write a recursive program to calculate Fibonacci numbers and find its step count.
+#TC-O(2^n), SC-O(n)
 COUNT=0
 def recur_fibo(n):  
    global COUNT
