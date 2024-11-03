@@ -1,3 +1,5 @@
+#Backtraking n-queen
+#TC-O(n!), SC-O(n^2)
 def print_solution(board):
     for row in board:
         print(" ".join("Q" if col else "." for col in row))
