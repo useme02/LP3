@@ -1,4 +1,5 @@
 # A Huffman Tree Node 
+#TC-O(nlogn), SC-O(n)
 import heapq
 
 
