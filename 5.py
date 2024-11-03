@@ -1,7 +1,9 @@
+#Knapsacck 01
 import random
 import time
 
 # QuickSort with deterministic pivot (last element as pivot)
+#TC-O(n^2), SC-O(n)
 def quick_sort_deterministic(arr):
     if len(arr) <= 1:
         return arr
@@ -11,6 +13,7 @@ def quick_sort_deterministic(arr):
     return quick_sort_deterministic(left) + [pivot] + quick_sort_deterministic(right)
 
 # QuickSort with randomized pivot
+#TC-O(n^2), SC-O(n)
 def quick_sort_randomized(arr):
     if len(arr) <= 1:
         return arr
