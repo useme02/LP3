@@ -1,3 +1,5 @@
+#Knapsacck 01
+#TC-O(n*capactiy), SC-O(n*capaciity)
 def knapsack_dp(values, weights, capacity):
     n = len(values)
     dp = [[0 for _ in range(capacity + 1)] for _ in range(n + 1)]
