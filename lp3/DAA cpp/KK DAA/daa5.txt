@@ -1,0 +1,72 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class DAA5 {
+    vector<vector<int>> board;
+    int n;
+public:
+    DAA5(int n) : n(n) {
+        board.resize(n, vector<int>(n, 0));
+        //int[][] board = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
+        board[0][0] = 1;
+    }
+    
+private:
+    bool isSafe(int row, int col) {
+        for (int i = 0; i < row; i++) {
+            if (board[i][col] == 1) return false;
+        }
+        for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) {
+            if (board[i][j] == 1) return false;
+        }
+        for (int i = row, j = col; i >= 0 && j < n; i--, j++) {
+            if (board[i][j] == 1) return false;
+        }
+        return true;
+    }
+    
+    bool solve(int row) {
+        if (row >= n) return true;
+        for (int col = 0; col < n; col++) {
+            if (isSafe(row, col)) {
+                board[row][col] = 1;
+                cout << "Placed queen at (" << row << ", " << col << "):" << endl;
+                printBoard();
+                if (solve(row + 1)) return true;
+                board[row][col] = 0;
+                cout << "Backtracking from (" << row << ", " << col << "):" << endl;
+                printBoard();
+            }
+        }
+
+        return false;
+    }
+
+public:
+    void solveNQueens() {
+        if (solve(1)) {
+            cout << "Final Solution:" << endl;
+            printBoard();
+        } else {
+            cout << "Solution does not exist." << endl;
+        }
+    }
+    
+    void printBoard() {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                cout << board[i][j] << " ";
+            }
+            cout << endl;
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    int n = 4;
+    DAA5 obj(n);
+    obj.solveNQueens();
+    return 0;
+}

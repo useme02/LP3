@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int arr[3][2] = {{100, 20}, {60, 10}, {120, 30}};
+    int w = 50;
+    int n = sizeof(arr) / sizeof(arr[0]);
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            float ratio1 = (float)arr[j][0] / arr[j][1];
+            float ratio2 = (float)arr[j + 1][0] / arr[j + 1][1];
+            if (ratio1 < ratio2) {
+                int temp[2] = {arr[j][0], arr[j][1]};
+                arr[j][0] = arr[j + 1][0];
+                arr[j][1] = arr[j + 1][1];
+                arr[j + 1][0] = temp[0];
+                arr[j + 1][1] = temp[1];
+            }
+        }
+    }
+    float profit = 0;
+    for (int i = 0; i < n; i++) {
+        if (w >= arr[i][1]) {
+            profit += arr[i][0];
+            w -= arr[i][1];
+        } else {
+            profit += ((float)w / arr[i][1]) * arr[i][0];
+            break;
+        }
+    }
+    cout << "Final Profit: " << profit << endl;
+    return 0;
+}
